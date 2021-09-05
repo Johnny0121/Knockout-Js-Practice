@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div id="knockout-app" class="card">
+        <header>
+            Good Dogs Walks Inc.
+        </header>
+        <div class="card-section">
+            <h2>Toy Inventory</h2>
+            <p data-bind="visible: inventory().length > 0">These are the assets we have to work with</p>
+            <p data-bind="visible: inventory().length <= 0">You don't have any toys yet!</p>
+
+            <button data-bind="click: addItem, enable: inventory().length < 4">+ Add Toy</button>
+            <ul class="counter-ui-container" data-bind="foreach: inventory">
+                <li>
+                    <span>
+                        <span data-bind="class: $data.icon"></span>
+                        <span data-bind="text: $data.text"></span>
+                    </span>
+                    <span>
+                        <button data-bind="click: $parent.removeItem, attr: { 'item-index': $index }">&times;</button>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <footer>
+            <span>Have a tail wagging day!</span>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js" integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="main2.js"></script>
+</body>
+</html>
